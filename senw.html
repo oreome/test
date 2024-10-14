@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Data to WhatsApp</title>
+  </head>
+  <style>
+    * {
+      font-family: Arial, sans-serif;
+    }
+    form {
+      margin: 15px 5px;
+      width: 100%; /* Ensures responsiveness */
+      font-size: 16px;
+    }
+    form h1 {
+      text-align: center;
+    }
+    form label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      resize: vertical;
+    }
+    form button {
+      background: #4caf50;
+      color: white;
+      padding: 10px 15px;
+      margin-top: 5px;
+      border: none;
+      cursor: pointer;
+    }
+    form button:hover {
+      background: green;
+    }
+  </style>
+  <body>
+    <form>
+      <h1>Send Data To WhatsApp</h1>
+      <label for="name">Name</label>
+      <input type="text" class="name" placeholder="Enter your name">
+
+      <label for="email">Email</label>
+      <input type="email" class="email" placeholder="Enter your email">
+
+      <label for="country">Country</label>
+      <input type="text" class="country" placeholder="Enter your country">
+
+      <label for="message">Message</label>
+      <textarea class="message" placeholder="Enter your message"></textarea>
+
+      <button type="button" onclick="sendwhatsapp();">Send Via WhatsApp</button>
+    </form>
+
+    <script>
+      function sendwhatsapp() {
+        var phonenumber = "+60197282726";
+
+        var name = document.querySelector(".name").value;
+        var email = document.querySelector(".email").value;
+        var country = document.querySelector(".country").value;
+        var message = document.querySelector(".message").value;
+
+        var url = "https://wa.me/" + phonenumber + "?text="
+          + "*Name:* " + name + "%0a"
+          + "*Email:* " + email + "%0a"
+          + "*Country:* " + country + "%0a"
+          + "*Message:* " + message
+          + "%0a%0aThis is an example of sending HTML form data to WhatsApp";
+
+        window.open(url, '_blank').focus();
+      }
+    </script>
+  </body>
+</html>
